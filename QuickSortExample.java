@@ -1,29 +1,29 @@
 public class QuickSortExample {
     public static void main(String args[]) {
-        int arr[] = {10, 7, 8, 9, 1, 5};
+        int arr[] = { 10, 80, 30, 90, 40, 50, 70 };
         int n = arr.length;
 
         QuickSortExample qse = new QuickSortExample();
-        qse.quickSort(arr, 0, n-1);
+        qse.quickSort(arr, 0, n - 1);
 
         System.out.println("sorted array");
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + " ");
         }
     }
 
-    void quickSort(int arr[], int begin, int end) {
-        if (begin < end) {
-            int partitionIndex = partition(arr, begin, end);
-            quickSort(arr, begin, partitionIndex-1);
-            quickSort(arr, partitionIndex+1, end);
+    void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(arr, low, high);
+            quickSort(arr, low, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, high);
         }
     }
 
-    int partition(int arr[], int begin, int end) {
-        int pivot = arr[end];
-        int i = (begin-1);
-        for (int j = begin; j < end; j++) {
+    int partition(int arr[], int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
                 i++;
                 int swapTemp = arr[i];
@@ -31,9 +31,9 @@ public class QuickSortExample {
                 arr[j] = swapTemp;
             }
         }
-        int swapTemp = arr[i+1];
-        arr[i+1] = arr[end];
-        arr[end] = swapTemp;
-        return i+1;
+        int swapTemp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = swapTemp;
+        return i + 1;
     }
 }
